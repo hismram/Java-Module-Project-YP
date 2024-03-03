@@ -89,7 +89,7 @@ public class Calculator {
                 break;
             } catch (NumberFormatException | StringIndexOutOfBoundsException e) {
                 // Получили менее 2 элементов или последний элемент это не стоимость
-                System.out.println("Некорректный формат ввода, повторите ввод");
+                System.out.println("Некорректный формат, повторите ввод");
             }
         }
     }
