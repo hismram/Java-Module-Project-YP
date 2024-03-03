@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Calculator {
@@ -76,7 +77,10 @@ public class Calculator {
             // Пытаемся распарсить полученную строку, в случае ошибки выводим предупреждение о некорректном формате
             try {
                 // Начинаем с последнего блока, это цена
-                price = Float.parseFloat(input.substring(input.lastIndexOf(' ')));
+                // Вообще разделение дробной части зависит от локали и в России это ',' но по условию задачи '.'
+                // .nextFloat() в ru локали берет именно значения разделенные ','
+                String lastItem = input.substring(input.lastIndexOf(' ')).replace(",", ".");
+                price = Float.parseFloat(lastItem);
 
                 if (price <= 0) {
                     System.out.println("Стоимость товара должна быть больше нуля, повторите ввод");
@@ -150,7 +154,8 @@ class Formatter {
             }
         }
 
-        return String.format("%.2f %s", value, result);
+        // Форматируем и меняем локаль для отделения дробной части точкой
+        return String.format(Locale.US, "%.2f %s", value, result);
     }
 
     /**
