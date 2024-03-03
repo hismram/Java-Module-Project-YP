@@ -53,14 +53,14 @@ public class Calculator {
         System.out.println("Добавленные товары:");
         for (Good good : goods) {
             // Выводим данные товара
-            System.out.printf("%s %.2f %s%n", good.name, good.price, Formatter.format(good.price));
+            System.out.printf("%s %s%n", good.name, Formatter.format(good.price));
         }
 
         System.out.println("-------------------");
         // Выводим общую стоимость
-        System.out.printf("Итого: %.2f %s%n", total, Formatter.format(total));
+        System.out.printf("Итого: %s%n", Formatter.format(total));
         // Выводим стоимость на человека
-        System.out.printf("На человека: %.2f %s%n", byPerson, Formatter.format(byPerson));
+        System.out.printf("На человека: %s%n", Formatter.format(byPerson));
     }
 
     private void readGood() {
@@ -150,7 +150,7 @@ class Formatter {
             }
         }
 
-        return result;
+        return String.format("%.2f %s", value, result);
     }
 
     /**
